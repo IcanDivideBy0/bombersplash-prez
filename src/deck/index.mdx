@@ -1,0 +1,784 @@
+import Flexbox from "./components/Flexbox";
+import NetworkTopology from "./components/NetworkTopology";
+import NetworkPackets from "./components/NetworkPackets";
+import Lag from "./components/Lag";
+import mdx from "@mdx-js/mdx";
+import TweetEmbed from "react-tweet-embed";
+import { Code, Appear } from "mdx-deck";
+
+export { default as theme } from "./theme";
+
+# Multiplayer online games with JavaScript
+
+---
+
+<Flexbox alignItems="center" justifyContent="space-around">
+  <div>
+    <img src={require("./images/mouthpiece.png")} style={{ maxWidth: "25vw" }} />
+  </div>
+
+<div style={{ margin: "0 2em" }}>
+  <h1>About Me</h1>
+  <p>Samuel Hurel</p>
+  <p>
+    🖥 SYOS
+    <br />
+    <small>Shape Your Own Sound</small>
+  </p>
+  <p>
+    <img
+      src={require("super-tiny-icons/images/svg/twitter.svg")}
+      style={{
+        height: "1em",
+        margin: "0 .4em -.2em 0",
+      }}
+    />
+    @IcanDivideBy0
+  </p>
+</div>
+
+  <div>
+    <img src={require("./images/daro.jpg")} style={{ maxWidth: "25vw" }} />
+  </div>
+</Flexbox>
+
+---
+
+# Faire du neuf avec du vieux
+
+<img src={require("./images/paj.jpg")} style={{ maxWidth: "80%" }} />
+
+```notes
+20 juillet 18h00 - 23 juillet 06h00 - 60h
+```
+
+---
+
+- Multiplayer
+- Browser based
+- Short game
+- Fast-paced action
+
+---
+
+<Flexbox alignItems="center" justifyContent="space-around">
+  <img
+    src={require("./images/bomberman.png")}
+    style={{ flex: 1, maxWidth: "40%" }}
+  />
+  <span
+    style={{
+      fontFamily: "Roboto",
+      fontWeight: 700,
+      fontSize: "3rem",
+    }}
+  >
+    +
+  </span>
+  <img
+    src={require("./images/splatoon-2.jpg")}
+    style={{ flex: 1, maxWidth: "40%" }}
+  />
+</Flexbox>
+
+---
+
+# Bombersplash
+
+<img src={require("./images/bombersplash.png")} style={{ maxWidth: "80%" }} />
+
+[bombersplash.online](https://bombersplash.online)
+
+---
+
+# Multi-player
+
+It's all about data-syncing
+
+<Flexbox
+  alignItems="center"
+  justifyContent="space-between"
+  style={{ maxHeight: "60vh" }}
+>
+  {[0, 1, 2].map(idx => (
+    <div key={idx} style={{ flex: 1, margin: "0 .5em", textAlign: "center" }}>
+      <img
+        src={require("./components/images/laptop.svg")}
+        alt=""
+        style={{ width: "100%" }}
+      />
+    </div>
+  ))}
+</Flexbox>
+
+```js
+{ data: ... }
+```
+
+```notes
+Sync world state across network
+```
+
+---
+
+# Network architectures
+
+## Player as host
+
+<Flexbox
+  alignItems="center"
+  justifyContent="space-between"
+  style={{ maxHeight: "60vh" }}
+>
+  <div style={{ flex: 1.5, marginRight: ".5em" }}>
+    <NetworkTopology />
+  </div>
+
+  <Flexbox
+    flexDirection="column"
+    style={{
+      flex: 1,
+      marginLeft: ".5em",
+      maxHeight: "60vh"
+    }}
+  >
+    <img
+      src={require("./images/warcraft-3.jpg")}
+      alt=""
+      style={{
+        flex: 1,
+        marginBottom: ".5em",
+        maxWidth: "100%",
+        maxHeight: 'calc(30vh - .5em)',
+      }}
+    />
+    <img
+      src={require('./images/counter-strike-1.6.jpg')}
+      alt=""
+      style={{
+        flex: 1,
+        marginTop: ".5em",
+        maxWidth: "100%",
+        maxHeight: 'calc(30vh - .5em)',
+      }}
+    />
+  </Flexbox>
+</Flexbox>
+
+---
+
+# Problems
+
+- Host disconnect
+- Uneven lag
+- Public IP
+- Cheat
+- Pirating
+
+---
+
+# Network architectures
+
+## Server as host
+
+<Flexbox
+  alignItems="center"
+  justifyContent="space-between"
+  style={{ maxHeight: "60vh" }}
+>
+  <div style={{ flex: 1.5, marginRight: ".5em" }}>
+    <NetworkTopology withServer/>
+  </div>
+
+  <Flexbox
+    flexDirection="column"
+    style={{
+      flex: 1,
+      marginLeft: ".5em",
+      maxHeight: "60vh"
+    }}
+  >
+    <img
+      src={require('./images/diablo-3.jpg')}
+      alt=""
+      style={{
+        marginBottom: ".5em",
+        maxWidth: "100%",
+        maxHeight: 'calc(30vh - .5em)',
+      }}
+    />
+    <img
+      src={require('./images/overwatch.jpg')}
+      alt=""
+      style={{
+        marginTop: ".5em",
+        maxWidth: "100%",
+        maxHeight: 'calc(30vh - .5em)',
+      }}
+    />
+  </Flexbox>
+</Flexbox>
+
+---
+
+# Problems
+
+- Game instance on the server
+- Cheat
+
+---
+
+# Network
+
+## Data packets content
+
+<NetworkPackets
+  symetrical
+  outLabel="inputs"
+  inLabel="world state"
+  style={{ margin: "3em 0" }}
+/>
+
+~30 packets/sec<br/><small>symetrical?</small>
+
+---
+
+# Network
+
+<Flexbox
+  justifyContent="space-between"
+>
+  <div style={{ flex: 1 }}>
+    <h2>TCP</h2>
+    <ul style={{ textAlign: 'left' }}>
+      <li>Reliable</li>
+      <li>Ordered</li>
+      <li>Head of line blocking</li>
+      <li>Easily secured</li>
+      <li>Browsers use pool of connections</li>
+    </ul>
+  </div>
+
+  <div style={{ flex: 1 }}>
+    <h2>UDP</h2>
+    <ul style={{ textAlign: 'left' }}>
+      <li>No connection required, just send the data!</li>
+      <li>Unreliable</li>
+      <li>Unordered</li>
+      <li>Vulnerable</li>
+      <li>Not present in browsers</li>
+    </ul>
+  </div>
+</Flexbox>
+
+---
+
+# WebRTC to the rescue!
+
+- p2p architecture
+- Mostly used for media sreaming
+- The only avaliable option left for UDP
+- Good for connecting clients, harder to use on your server
+- Encrypted
+
+---
+
+# WebRTC DataChannels
+
+<img src={require("./images/webrtc.svg")} style={{ maxWidth: "100%" }} />
+
+<div>
+  <hr />
+  <p>JSON.stringify / Protobuf?</p>
+</div>
+
+```notes
+ICE for discovering public IP & NAT trasversal
+```
+
+---
+
+# Reducing lag
+
+<Lag />
+
+```notes
+PERCEIVED lag
+```
+
+---
+
+# Running out of time!
+
+<iframe
+  type="text/html"
+  width="640"
+  height="360"
+  src="https://www.youtube.com/embed/ptzGjvvUNE8?&autoplay=0&mute=1&loop=1&rel=0&showinfo=0&color=white&iv_load_policy=3&playlist=1wUgMEaUUrM"
+  frameBorder="0"
+  allowFullScreen
+/>
+
+<!-- <img src={require("./images/bombersplash_v1.gif")} style={{ width: "70vw" }} /> -->
+
+---
+
+# Votes!
+
+<img src={require("./images/jam-results.png")} style={{ maxWidth: "100%" }} />
+
+- Awesome community
+- Tons of new ideas
+
+---
+
+# Let’s push it a bit
+
+- Rework the graphic engine
+- Add physics
+
+---
+
+# Tiles sprite
+
+<img
+  src={require("./images/tiles.png")}
+  style={{
+    width: "50vw",
+    // imageRendering: "pixelated"
+  }}
+/>
+
+---
+
+# DOM → Canvas
+
+<img
+  src={require("./images/canvas/map-grid.png")}
+  style={{
+    width: "50vw",
+    // imageRendering: "pixelated"
+  }}
+/>
+
+```notes
+Each square is a div!
+DOM fast enouth, for now
+React tree reconciliation is slow but PureComponents makes it OK
+Bomb splash particles ?
+Canvas still slow
+```
+
+---
+
+# Canvas → n \* Canvas
+
+<Flexbox
+  flexDirection="column"
+  alignItems="center"
+  style={{ maxHeight: "50vh", maxWidth: "80vw" }}
+>
+  <Flexbox style={{ flex: 1 }} flexDirection="row">
+    <Flexbox
+      style={{
+        flex: "1 1 33.33%",
+        margin: 8,
+        padding: 8,
+        outline: "1px solid rgba(255, 0, 0, .5)",
+      }}
+    >
+      <img
+        src={require("./images/canvas/map-bg.png")}
+        style={{
+          objectFit: "contain",
+          maxWidth: "calc(80vw / 3)",
+        }}
+      />
+    </Flexbox>
+    <Flexbox
+      style={{
+        flex: "1 1 33.33%",
+        objectFit: "contain",
+        margin: 8,
+        padding: 8,
+        outline: "1px solid rgba(255, 0, 0, .5)",
+      }}
+    >
+      <img
+        src={require("./images/canvas/map-props.png")}
+        style={{
+          objectFit: "contain",
+          maxWidth: "calc(80vw / 3)",
+        }}
+      />
+    </Flexbox>
+    <Flexbox
+      style={{
+        flex: "1 1 33.33%",
+        margin: 8,
+        padding: 8,
+        outline: "1px solid rgba(255, 0, 0, .5)",
+      }}
+    >
+      <img
+        src={require("./images/canvas/map-splash.png")}
+        style={{
+          objectFit: "contain",
+          maxWidth: "calc(80vw / 3)",
+        }}
+      />
+    </Flexbox>
+  </Flexbox>
+  <Flexbox
+    style={{
+      flex: 1,
+      objectFit: "contain",
+      margin: 8,
+      padding: 8,
+      outline: "1px solid rgba(255, 0, 0, .5)",
+    }}
+  >
+    <img
+      src={require("./images/canvas/map.png")}
+      style={{
+        objectFit: "contain",
+        maxWidth: "calc(80vw / 3)",
+      }}
+    />
+  </Flexbox>
+</Flexbox>
+
+```notes
+Offscreen canvas
+Not in DOM
+Render rate MUCH lower
+```
+
+---
+
+# The splashes case
+
+<Flexbox
+  flexDirection="column"
+  alignItems="center"
+  style={{ maxHeight: "50vh", maxWidth: "80vw" }}
+>
+  <Flexbox
+    style={{
+      flex: 1,
+      objectFit: "contain",
+      margin: 8,
+      padding: 8,
+    }}
+  >
+    <img
+      src={require("./images/canvas/bomb.png")}
+      style={{
+        objectFit: "contain",
+      }}
+    />
+  </Flexbox>
+  <Flexbox
+    alignItems="stretch"
+    justifyContent="center"
+    style={{
+      flex: 1,
+      objectFit: "contain",
+      margin: 8,
+      padding: 8,
+      maxWidth: "100%",
+    }}
+  >
+    <Flexbox
+      style={{
+        flex: "1 1 40%",
+        objectFit: "contain",
+        margin: 8,
+        padding: 8,
+        maxWidth: "40%",
+      }}
+    >
+      <img
+        src={require("./images/canvas/jam-splash.png")}
+        style={{
+          objectFit: "contain",
+          maxWidth: "100%",
+        }}
+      />
+    </Flexbox>
+    <div style={{ margin: 16, alignSelf: "center" }}>→</div>
+    <Flexbox
+      style={{
+        flex: "1 1 40%",
+        objectFit: "contain",
+        margin: 8,
+        padding: 8,
+        maxWidth: "40%",
+      }}
+    >
+      <img
+        src={require("./images/canvas/result.png")}
+        style={{
+          objectFit: "contain",
+          maxWidth: "100%",
+        }}
+      />
+    </Flexbox>
+  </Flexbox>
+</Flexbox>
+
+---
+
+# Canvas compositing
+
+<iframe
+  src="https://mdn.mozillademos.org/en-US/docs/Web/API/Canvas_API/Tutorial/Compositing/Example$samples/Compositing_example?revision=1330821"
+  style={{
+    height: "50vh",
+    width: "60vw",
+    background: "#fff",
+    paddingLeft: 16,
+  }}
+  frameBorder="0"
+/>
+
+```notes
+26 composite operations
+```
+
+---
+
+```js
+const ctx = canvas.getContext("2d");
+ctx.globalCompositeOperation = "destination-out";
+```
+
+<Flexbox
+  flexDirection="column"
+  alignItems="center"
+  style={{
+    flex: 1,
+    objectFit: "contain",
+    maxHeight: "50vh",
+    maxWidth: "80vw",
+    margin: "16px 0",
+  }}
+>
+  <Flexbox
+    alignItems="stretch"
+    style={{
+      flex: 1,
+      objectFit: "contain",
+      margin: 8,
+      padding: 8,
+      maxWidth: "100%",
+    }}
+  >
+    <Flexbox
+      style={{
+        flex: "1 1 25%",
+        objectFit: "contain",
+        margin: 8,
+        padding: 8,
+        outline: "1px solid rgba(255, 0, 0, .5)",
+      }}
+    >
+      <img
+        src={require("./images/canvas/base-splash.png")}
+        style={{
+          objectFit: "contain",
+          maxWidth: "100%",
+        }}
+      />
+    </Flexbox>
+    <div style={{ margin: 16, alignSelf: "center" }}>+</div>
+    <Flexbox
+      style={{
+        flex: "1 1 25%",
+        objectFit: "contain",
+        margin: 8,
+        padding: 8,
+        outline: "1px solid rgba(255, 0, 0, .5)",
+      }}
+    >
+      <img
+        src={require("./images/canvas/splash-mask.png")}
+        style={{
+          objectFit: "contain",
+          maxWidth: "100%",
+        }}
+      />
+    </Flexbox>
+    <div style={{ margin: 16, alignSelf: "center" }}>=</div>
+    <Flexbox
+      style={{
+        flex: "1 1 25%",
+        objectFit: "contain",
+        margin: 8,
+        padding: 8,
+        outline: "1px solid rgba(255, 0, 0, .5)",
+      }}
+    >
+      <img
+        src={require("./images/canvas/splash-masked.png")}
+        style={{
+          objectFit: "contain",
+          maxWidth: "100%",
+        }}
+      />
+    </Flexbox>
+  </Flexbox>
+  <Flexbox
+    alignItems="stretch"
+    style={{
+      flex: 1,
+      objectFit: "contain",
+      margin: 8,
+      padding: 8,
+    }}
+  >
+    <img
+      src={require("./images/canvas/result.png")}
+      style={{
+        objectFit: "contain",
+        maxWidth: "100%",
+      }}
+    />
+  </Flexbox>
+</Flexbox>
+
+---
+
+# From AAbb to Physics engine
+
+- Computationally intensive
+- A good fit for trying WebAssembly
+
+---
+
+# WebAssembly
+
+- Binary code in browser
+- No garbage collection\*
+- No exceptions\*
+
+<img src={require("./images/caniuse-wasm.png")} />
+
+---
+
+<div style={{ zoom: 1.2 }}>
+  <TweetEmbed id="1021532074153394176" />
+</div>
+
+---
+
+<Flexbox justifyContent="center">
+  <img src={require("./images/rust.svg")} style={{ float: "left" }} />
+  <h1
+    style={{
+      lineHeight: "1.25",
+      fontSize: "3em",
+      marginBottom: "16px",
+      marginTop: "16px",
+      color: "heading",
+      textTransform: "uppercase",
+      fontWeight: "600",
+    }}
+  >
+    ust?
+  </h1>
+</Flexbox>
+
+- Made to replace C/C++
+- No garbage collection / exceptions
+- Young, yet rich ecosystem
+- [AreWeGameYet.com](http://arewegameyet.com/#eco)
+- [nphysics](https://www.nphysics.org/)
+
+---
+
+# WebAssembly + Rust
+
+```sh
+cargo +nightly build --target wasm32-unknown-unknown
+wasm-bindgen --browser ./target/.../physics.wasm
+```
+
+```js
+fetch("./physics.wasm")
+  .then(response =>
+    WebAssembly.instantiateStreaming(response, {
+      ...dependencies,
+    })
+  )
+  .then(({ instance }) => {
+    instance.myWasmFunction(); // YAY!
+  });
+```
+
+---
+
+<video controls="1" loop="1" name="media">
+  <source src={require("./images/bombersplash.mp4")} type="video/mp4" />
+</video>
+
+---
+
+# What I learnt
+
+- Network is time consuming
+- Tricking the user
+
+---
+
+# What’s next?
+
+- Music & Sounds
+- WebGL2
+
+<Appear>
+  {[
+    <div key="whatever">
+      <Flexbox
+        style={{ maxWidth: "80vw" }}
+        justifyContent="center"
+        alignItems="center"
+      >
+        <div style={{ margin: 16 }}>
+          <Code className="glsl">
+            {[
+              "#version 300 es",
+              "",
+              "void main() {",
+              "  gl_Position =",
+              "    projectionMatrix *",
+              "    modelViewMatrix *",
+              "    vertexPosition;",
+              "}",
+            ].join("\n")}
+          </Code>
+        </div>
+        <div style={{ margin: 16 }}>
+          <Code className="css">
+            {[
+              "#my-presentation {",
+              "  /* height / 2 / tan(FOVY / 2) */",
+              "  perspective: ...px;",
+              "  /* modelViewMatrix */",
+              "  transform: maxrix3d(...);",
+              "}",
+            ].join("\n")}
+          </Code>
+        </div>
+      </Flexbox>
+    </div>,
+  ]}
+</Appear>
+
+```notes
+lag is about perception, and ... 3D as well
+```
+
+---
+
+# Thank you!

@@ -1,0 +1,42 @@
+package prez;
+syntax = "proto3";
+
+message Vec2 {
+  float x = 1;
+  float y = 2;
+}
+
+message Player {
+  string id = 1;
+  Vec2 pos = 2;
+  Vec2 vel = 3;
+  int32 skin = 4;
+}
+
+message GameState {
+  repeated Player players = 1;
+}
+
+message GameUpdate {
+  int64 lastPacketId = 1;
+  GameState gameState = 2;
+}
+
+message PlayerUpdate {
+  message PlayerInputs {
+    Vec2 vel = 1;
+    bool jump = 2;
+  }
+
+  int64 packetId = 1;
+  PlayerInputs inputs = 2;
+}
+
+message Message {
+  string type = 1;
+
+  oneof data {
+    GameUpdate gameUpdate = 2;
+    PlayerUpdate playerUpdate = 3;
+  }
+}

@@ -1,0 +1,3 @@
+.PrezMasterGLHTMLWrapper > div > div > div > div > * {
+  transform: translateZ(1px);
+}

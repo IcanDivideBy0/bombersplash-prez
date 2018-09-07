@@ -1,0 +1,13 @@
+[package]
+name = "physics"
+version = "0.1.0"
+authors = ["Samuel Hurel <samuel.hurel@gmail.com>"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+nphysics3d = "0.9.1"
+wasm-bindgen = "0.2.19"
+nalgebra = "0.16.0"
+ncollide3d = "0.17.1"

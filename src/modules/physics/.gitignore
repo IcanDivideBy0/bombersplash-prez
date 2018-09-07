@@ -1,0 +1,6 @@
+/target
+**/*.rs.bk
+Cargo.lock
+
+/js/*
+!/js/physics_bg.js
