@@ -136,7 +136,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "/bombersplash-prez/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -4299,7 +4299,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = Object({"NODE_ENV":"production","PUBLIC_URL":"","REACT_APP_SERVER_URL":""}).DEBUG;
+    r = Object({"NODE_ENV":"production","PUBLIC_URL":"/bombersplash-prez","REACT_APP_SERVER_URL":""}).DEBUG;
   }
 
   return r;
@@ -6511,7 +6511,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = Object({"NODE_ENV":"production","PUBLIC_URL":"","REACT_APP_SERVER_URL":""}).DEBUG;
+    r = Object({"NODE_ENV":"production","PUBLIC_URL":"/bombersplash-prez","REACT_APP_SERVER_URL":""}).DEBUG;
   }
 
   return r;
@@ -17873,7 +17873,7 @@ var css = (function (styles) {
 // 
 
 
-var SC_ATTR = typeof process !== 'undefined' && Object({"NODE_ENV":"production","PUBLIC_URL":"","REACT_APP_SERVER_URL":""}).SC_ATTR || 'data-styled-components';
+var SC_ATTR = typeof process !== 'undefined' && Object({"NODE_ENV":"production","PUBLIC_URL":"/bombersplash-prez","REACT_APP_SERVER_URL":""}).SC_ATTR || 'data-styled-components';
 var SC_STREAM_ATTR = 'data-styled-streamed';
 var CONTEXT_KEY = '__styled-components-stylesheet__';
 
@@ -23357,7 +23357,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = Object({"NODE_ENV":"production","PUBLIC_URL":"","REACT_APP_SERVER_URL":""}).DEBUG;
+    r = Object({"NODE_ENV":"production","PUBLIC_URL":"/bombersplash-prez","REACT_APP_SERVER_URL":""}).DEBUG;
   }
 
   return r;
@@ -28581,7 +28581,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = Object({"NODE_ENV":"production","PUBLIC_URL":"","REACT_APP_SERVER_URL":""}).DEBUG;
+    r = Object({"NODE_ENV":"production","PUBLIC_URL":"/bombersplash-prez","REACT_APP_SERVER_URL":""}).DEBUG;
   }
 
   return r;
@@ -34614,4 +34614,4 @@ var _createClass=function(){function defineProperties(target,props){for(var i=0;
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.8633a690.js.map
+//# sourceMappingURL=main.b2e9a344.js.map
