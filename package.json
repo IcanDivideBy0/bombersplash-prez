@@ -2,7 +2,7 @@
   "name": "prez",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://icandivideby0.github.io/bombersplash-prez/",
+  "homepage": "https://prez.bombersplash.online",
   "dependencies": {
     "classnames": "^2.2.6",
     "css-element-queries": "^1.0.2",
