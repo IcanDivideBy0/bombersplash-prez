@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "static/js/" + ({}[chunkId]||chunkId) + "." + {"0":"c174c505","1":"f7ac5c15","2":"1552cfcd"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "static/js/" + ({}[chunkId]||chunkId) + "." + {"0":"bbe12a5f","1":"bf20a3c0","2":"3fd83ab7"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -136,7 +136,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/bombersplash-prez/";
+/******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -4299,7 +4299,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = Object({"NODE_ENV":"production","PUBLIC_URL":"/bombersplash-prez","REACT_APP_SERVER_URL":"https://bombersplash-prez.herokuapp.com/"}).DEBUG;
+    r = Object({"NODE_ENV":"production","PUBLIC_URL":"","REACT_APP_SERVER_URL":"https://bombersplash-prez.herokuapp.com/"}).DEBUG;
   }
 
   return r;
@@ -6511,7 +6511,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = Object({"NODE_ENV":"production","PUBLIC_URL":"/bombersplash-prez","REACT_APP_SERVER_URL":"https://bombersplash-prez.herokuapp.com/"}).DEBUG;
+    r = Object({"NODE_ENV":"production","PUBLIC_URL":"","REACT_APP_SERVER_URL":"https://bombersplash-prez.herokuapp.com/"}).DEBUG;
   }
 
   return r;
@@ -17873,7 +17873,7 @@ var css = (function (styles) {
 // 
 
 
-var SC_ATTR = typeof process !== 'undefined' && Object({"NODE_ENV":"production","PUBLIC_URL":"/bombersplash-prez","REACT_APP_SERVER_URL":"https://bombersplash-prez.herokuapp.com/"}).SC_ATTR || 'data-styled-components';
+var SC_ATTR = typeof process !== 'undefined' && Object({"NODE_ENV":"production","PUBLIC_URL":"","REACT_APP_SERVER_URL":"https://bombersplash-prez.herokuapp.com/"}).SC_ATTR || 'data-styled-components';
 var SC_STREAM_ATTR = 'data-styled-streamed';
 var CONTEXT_KEY = '__styled-components-stylesheet__';
 
@@ -22800,7 +22800,7 @@ var _createClass=function(){function defineProperties(target,props){for(var i=0;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router__ = __webpack_require__(136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_modules_net__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_modules_prez__ = __webpack_require__(205);
-function Router(){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["b" /* Switch */],null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Route */],{path:"/bombersplash-prez"+"/slides",component:__WEBPACK_IMPORTED_MODULE_3_modules_prez__["c" /* Slides */]}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Route */],{path:"/bombersplash-prez"+"/master",component:function component(){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_modules_net__["b" /* SocketProvider */],{socketUrl:"https://bombersplash-prez.herokuapp.com/"},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_modules_prez__["a" /* PrezMaster */],null));}}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Route */],{component:function component(){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_modules_net__["b" /* SocketProvider */],{socketUrl:"https://bombersplash-prez.herokuapp.com/"},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_modules_prez__["b" /* PrezSlave */],null));}}));}
+function Router(){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["b" /* Switch */],null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Route */],{path:""+"/slides",component:__WEBPACK_IMPORTED_MODULE_3_modules_prez__["c" /* Slides */]}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Route */],{path:""+"/master",component:function component(){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_modules_net__["b" /* SocketProvider */],{socketUrl:"https://bombersplash-prez.herokuapp.com/"},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_modules_prez__["a" /* PrezMaster */],null));}}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Route */],{component:function component(){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_modules_net__["b" /* SocketProvider */],{socketUrl:"https://bombersplash-prez.herokuapp.com/"},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_modules_prez__["b" /* PrezSlave */],null));}}));}
 
 /***/ }),
 /* 136 */
@@ -23453,7 +23453,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = Object({"NODE_ENV":"production","PUBLIC_URL":"/bombersplash-prez","REACT_APP_SERVER_URL":"https://bombersplash-prez.herokuapp.com/"}).DEBUG;
+    r = Object({"NODE_ENV":"production","PUBLIC_URL":"","REACT_APP_SERVER_URL":"https://bombersplash-prez.herokuapp.com/"}).DEBUG;
   }
 
   return r;
@@ -28677,7 +28677,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = Object({"NODE_ENV":"production","PUBLIC_URL":"/bombersplash-prez","REACT_APP_SERVER_URL":"https://bombersplash-prez.herokuapp.com/"}).DEBUG;
+    r = Object({"NODE_ENV":"production","PUBLIC_URL":"","REACT_APP_SERVER_URL":"https://bombersplash-prez.herokuapp.com/"}).DEBUG;
   }
 
   return r;
@@ -35165,4 +35165,4 @@ function updateLink (link, options, obj) {
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.a7eca679.js.map
+//# sourceMappingURL=main.7f7dc5d2.js.map
