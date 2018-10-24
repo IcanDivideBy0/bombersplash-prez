@@ -44,10 +44,10 @@ export default class KeyboardController extends React.PureComponent {
 
     const testKeys = anyPressed(this.pressedKeys);
 
-    if (testKeys(["ArrowUp", "z"])) vel.y += 1;
-    if (testKeys(["ArrowDown", "s"])) vel.y -= 1;
-    if (testKeys(["ArrowLeft", "q"])) vel.x -= 1;
-    if (testKeys(["ArrowRight", "d"])) vel.x += 1;
+    if (testKeys(["w", "z"])) vel.y += 1;
+    if (testKeys(["s"])) vel.y -= 1;
+    if (testKeys(["a", "q"])) vel.x -= 1;
+    if (testKeys(["d"])) vel.x += 1;
 
     const hypot = Math.hypot(vel.x, vel.y);
 
@@ -56,7 +56,7 @@ export default class KeyboardController extends React.PureComponent {
       y: hypot < 1 ? vel.y : vel.y / hypot,
     };
 
-    onInputChange({ vel, jump: testKeys([" ", "z"]) });
+    onInputChange({ vel, jump: testKeys(["w", "z"]) });
   }
 
   render() {
