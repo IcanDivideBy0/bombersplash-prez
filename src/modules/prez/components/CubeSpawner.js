@@ -26,32 +26,43 @@ class ObjSpawner extends React.Component {
   };
 
   spawnCube() {
-    const { scene, world } = this.props;
+    const { scene, world, size } = this.props;
 
     const objId = uuidv4();
 
+    const posX = Math.floor((Math.random() - 0.5) * 0.8 * size.width);
+    const posY = Math.floor((Math.random() - 0.5) * 0.8 * size.height);
+
+    const _size = Math.random() * 100 + 100;
+
     world.addCube(
       objId,
-      [100, 100, 100], // size
-      [0, 400, 0], // pos
+      [_size, _size, _size], // size
+      [posX, 400, posY], // pos
       [0, 0, 0], // rot
       [0, 0, 0] // vel
     );
 
     // this.objects[objId] = new Obj(scene, require("./assets/suzanne.obj"));
-    this.objects[objId] = new Obj(scene, require("./assets/cube.obj"));
+    this.objects[objId] = {
+      obj: new Obj(scene, require("./assets/cube.obj")),
+      size: _size,
+    };
   }
 
   handleDraw = deltaTime => {
     const { world } = this.props;
-    const scale = mat4.fromScaling([], [100, 100, 100]);
 
     Object.keys(this.objects).forEach(objId => {
-      const obj = this.objects[objId];
+      const object = this.objects[objId];
+      const scale = mat4.fromScaling(
+        [],
+        [object.size, object.size, object.size]
+      );
 
       const m = mat4.mul([], world.getCube(objId), scale);
-      obj.setTransform(m);
-      obj.draw(deltaTime);
+      object.obj.setTransform(m);
+      object.obj.draw(deltaTime);
     });
   };
 

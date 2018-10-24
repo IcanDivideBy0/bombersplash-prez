@@ -147,7 +147,7 @@ class PrezMaster extends React.Component {
           )}
         </GlHtmlPlane>
 
-        {world && <CubeSpawner world={world} />}
+        {world && <CubeSpawner world={world} size={this.size} />}
 
         {false && (
           <GlObj
