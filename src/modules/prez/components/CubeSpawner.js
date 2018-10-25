@@ -43,10 +43,11 @@ class ObjSpawner extends React.Component {
       [0, 0, 0] // vel
     );
 
-    // this.objects[objId] = new Obj(scene, require("./assets/suzanne.obj"));
     this.objects[objId] = {
       obj: new Obj(scene, require("./assets/cube.obj")),
+      // obj: new Obj(scene, require("./assets/suzanne.obj")),
       size: _size,
+      color: [Math.random(), Math.random(), Math.random()],
     };
   }
 

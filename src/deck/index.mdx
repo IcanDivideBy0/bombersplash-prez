@@ -347,33 +347,34 @@ https://prez.bombersplash.online/#16
 
 ---
 
-# Tiles sprite
-
-<img
-  src={require("./images/tiles.png")}
-  style={{
-    width: "50vw",
-    // imageRendering: "pixelated"
-  }}
-/>
-
----
-
 # DOM → Canvas
 
-<img
-  src={require("./images/canvas/map-grid.png")}
-  style={{
-    width: "50vw",
-    // imageRendering: "pixelated"
-  }}
-/>
+<Flexbox style={{ maxWidth: "80vw" }}>
+  <Flexbox style={{ flex: 1, margin: 16 }}>
+    <img
+      src={require("./images/tiles.png")}
+      style={{
+        objectFit: "contain",
+        // imageRendering: "pixelated"
+      }}
+    />
+  </Flexbox>
+  <Flexbox style={{ flex: 1, margin: 16 }}>
+    <img
+      src={require("./images/canvas/map-grid.png")}
+      style={{
+        objectFit: "contain",
+        // imageRendering: "pixelated"
+      }}
+    />
+  </Flexbox>
+</Flexbox>
 
 ```notes
 Each square is a div!
 DOM fast enouth, for now
 React tree reconciliation is slow but PureComponents makes it OK
-Bomb splash particles ?
+Bomb splash particles ? lights ?
 Canvas still slow
 ```
 
@@ -667,8 +668,8 @@ ctx.globalCompositeOperation = "destination-out";
 # WebAssembly
 
 - Binary code in browser
-- No garbage collection\*
-- No exceptions\*
+- Any language → wasm
+- No garbage collection / exceptions / threads…\*
 
 <img src={require("./images/caniuse-wasm.png")} />
 
@@ -698,10 +699,12 @@ ctx.globalCompositeOperation = "destination-out";
 </Flexbox>
 
 - Made to replace C/C++
-- No garbage collection / exceptions
+- Built with WebAssembly in mind
 - Young, yet rich ecosystem
-- [AreWeGameYet.com](http://arewegameyet.com/#eco)
-- [nphysics](https://www.nphysics.org/)
+- No garbage collection / exceptions
+
+* [AreWeGameYet.com](http://arewegameyet.com/#eco)
+* [nphysics](https://www.nphysics.org/)
 
 ---
 
@@ -720,7 +723,7 @@ fetch("./physics.wasm")
     })
   )
   .then(({ instance }) => {
-    instance.myWasmFunction(); // YAY!
+    instance.myRustFunction(); // YAY!
   });
 ```
 
@@ -779,7 +782,3 @@ fetch("./physics.wasm")
 ```notes
 lag is about perception, and ... 3D as well
 ```
-
----
-
-# Thank you!

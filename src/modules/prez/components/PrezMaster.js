@@ -17,13 +17,13 @@ mat4.rotate(htmlPlaneTransform, mat4.create(), -Math.PI / 2, [1, 0, 0]);
 mat4.translate(htmlPlaneTransform, htmlPlaneTransform, [0, 0, 0]);
 // mat4.scale(htmlPlaneTransform, htmlPlaneTransform, [1 / 10, 1 / 10, 1 / 10]);
 
-function lerpVec3(v1, v2, alpha) {
-  return [
-    lerp(v1[0], v2[0], alpha),
-    lerp(v1[1], v2[1], alpha),
-    lerp(v1[2], v2[2], alpha),
-  ];
-}
+// function lerpVec3(v1, v2, alpha) {
+//   return [
+//     lerp(v1[0], v2[0], alpha),
+//     lerp(v1[1], v2[1], alpha),
+//     lerp(v1[2], v2[2], alpha),
+//   ];
+// }
 
 class PrezMaster extends React.Component {
   state = {
@@ -36,6 +36,7 @@ class PrezMaster extends React.Component {
     width: window.innerWidth,
     height: window.innerHeight,
   };
+  cameraPosTarget = null;
   cameraPos = null;
 
   async componentDidMount() {
@@ -106,8 +107,7 @@ class PrezMaster extends React.Component {
     }
 
     this.cameraPos = this.cameraPos || v;
-
-    this.cameraPos = lerpVec3(this.cameraPos, v, deltaTime / 100);
+    vec3.lerp(this.cameraPos, this.cameraPos, v, 1 / deltaTime);
 
     scene.camera.setPos(this.cameraPos);
     scene.camera.setLookAt([0, 0, 0]);
@@ -125,37 +125,59 @@ class PrezMaster extends React.Component {
     const { world, freeCamera } = this.state;
 
     return (
-      <GlCanvas onDraw={this.handleSceneDraw} showStats={freeCamera}>
-        <GlHtmlPlane transformMatrix={htmlPlaneTransform}>
-          {true && (
-            <div
-              className="PrezMasterGLHTMLWrapper"
-              style={{
-                position: "relative",
-                width: "100vw",
-                height: "100vh",
-              }}
-            >
-              <Slides onSlideChange={this.handleSlideChange} />
-
-              <DataChannelProvider
-                protoUrl={`${process.env.REACT_APP_SERVER_URL}/messages.proto`}
+      <React.Fragment>
+        <GlCanvas onDraw={this.handleSceneDraw} showStats={freeCamera}>
+          <GlHtmlPlane transformMatrix={htmlPlaneTransform}>
+            {true && (
+              <div
+                className="PrezMasterGLHTMLWrapper"
+                style={{
+                  position: "relative",
+                  width: "100vw",
+                  height: "100vh",
+                }}
               >
-                <Game master />
-              </DataChannelProvider>
-            </div>
+                <Slides onSlideChange={this.handleSlideChange} />
+
+                <DataChannelProvider
+                  protoUrl={`${
+                    process.env.REACT_APP_SERVER_URL
+                  }/messages.proto`}
+                >
+                  <Game master />
+                </DataChannelProvider>
+              </div>
+            )}
+          </GlHtmlPlane>
+
+          {world && <CubeSpawner world={world} size={this.size} />}
+
+          {false && (
+            <GlObj
+              onDraw={this.handleSuzanneDraw}
+              objUrl={require("./assets/suzanne.obj")}
+            />
           )}
-        </GlHtmlPlane>
-
-        {world && <CubeSpawner world={world} size={this.size} />}
-
-        {false && (
-          <GlObj
-            onDraw={this.handleSuzanneDraw}
-            objUrl={require("./assets/suzanne.obj")}
-          />
+        </GlCanvas>
+        {freeCamera && (
+          <h1
+            style={{
+              position: "fixed",
+              top: 0,
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 100000,
+              color: "#fff",
+              textTransform: "uppercase",
+              fontWeight: "600",
+              fontFamily: '"Roboto Condensed",system-ui,sans-serif',
+              fontSize: "10vh",
+            }}
+          >
+            Thank you!
+          </h1>
         )}
-      </GlCanvas>
+      </React.Fragment>
     );
   }
 }
